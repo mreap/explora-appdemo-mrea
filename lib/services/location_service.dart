@@ -34,11 +34,11 @@ class LocationService {
     // completar este paso — el bloque real primero consulta el permiso
     // actual y, si está denegado, recién ahí lo solicita al usuario
     // (nunca se solicita un permiso que ya fue concedido antes).
-    var permiso = LocationPermission.denied;
-    // var permiso = await Geolocator.checkPermission();
-    // if (permiso == LocationPermission.denied) {
-    //   permiso = await Geolocator.requestPermission();
-    // }
+    //var permiso = LocationPermission.denied;
+    var permiso = await Geolocator.checkPermission();
+    if (permiso == LocationPermission.denied) {
+      permiso = await Geolocator.requestPermission();
+    }
 
     if (permiso == LocationPermission.denied) {
       throw LocationException('Permiso de ubicación denegado. ExploraEC lo necesita para mostrarte lugares cercanos.');

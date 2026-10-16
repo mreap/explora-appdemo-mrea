@@ -85,31 +85,31 @@ class _MapScreenState extends State<MapScreen> {
         // el bloque real agrega uno para la posición del usuario y uno
         // por cada Place que expone el controller, cada uno navegando al
         // Detalle (con la distancia ya calculada) al tocarlo.
-        const MarkerLayer(markers: []),
-        // MarkerLayer(
-        //   markers: [
-        //     Marker(
-        //       point: miUbicacion,
-        //       width: 40,
-        //       height: 40,
-        //       child: const Icon(Icons.my_location, color: Colors.blue, size: 32),
-        //     ),
-        //     ...lugares.map(
-        //       (lugar) => Marker(
-        //         point: LatLng(lugar.lat, lugar.lng),
-        //         width: 40,
-        //         height: 40,
-        //         child: GestureDetector(
-        //           onTap: () => Get.to(() => DetailScreen(
-        //                 place: lugar,
-        //                 distanciaMetros: controller.distanciaA(lugar),
-        //               )),
-        //           child: Icon(Icons.place, color: AppTheme.colorPrimario, size: 36),
-        //         ),
-        //       ),
-        //     ),
-        //   ],
-        // ),
+        //const MarkerLayer(markers: []),
+        MarkerLayer(
+          markers: [
+            Marker(
+              point: miUbicacion,
+              width: 40,
+              height: 40,
+              child: const Icon(Icons.my_location, color: Colors.blue, size: 32),
+            ),
+            ...lugares.map(
+              (lugar) => Marker(
+                point: LatLng(lugar.lat, lugar.lng),
+                width: 40,
+                height: 40,
+                child: GestureDetector(
+                  onTap: () => Get.to(() => DetailScreen(
+                        place: lugar,
+                        distanciaMetros: controller.distanciaA(lugar),
+                      )),
+                  child: Icon(Icons.place, color: AppTheme.colorPrimario, size: 36),
+                ),
+              ),
+            ),
+          ],
+        ),
       ],
     );
   }
